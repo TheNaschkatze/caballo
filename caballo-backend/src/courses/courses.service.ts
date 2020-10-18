@@ -10,19 +10,8 @@ export class CoursesService {
     }
 
     update(id: number) {
-        const updatedCourses = this.courses.courseList.map(
-            (course) => {
-                if (course.courseId == id) {
-                    return {
-                        ...course,
-                        wishListFlag: !course.wishListFlag
-                    }
-                } else {
-                    return course
-                }
-            }
-        );
-        this.courses.courseList = updatedCourses;
+        const test = this.courses.courseList.find((c) => {c.courseId == id});
+        test.wishListFlag = !test.wishListFlag;
         return `we toggled the wishListFlag from ${id}}`;
     }
 }
