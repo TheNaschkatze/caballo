@@ -22,15 +22,13 @@ export const CoursesList: React.FC = () => {
 
     const dispatch: Dispatch<any> = useDispatch()
 
-    const toggleFav: any = React.useCallback(
-        (course: ICourse) => dispatch(toggleWishListFlag(course)),
-        [dispatch]
-    )
+    const toggleFav: any =
+        (course: ICourse) => dispatch(toggleWishListFlag(course))
 
     useEffect(() => {
         // Update the document title using the browser API
         dispatch(fetchCourses())
-    },[]);
+    }, []);
     return (
         <main className={styles.root}>
             <Grid container justify="center" alignItems="center">
