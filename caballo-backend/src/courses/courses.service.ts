@@ -10,8 +10,8 @@ export class CoursesService {
     }
 
     update(id: number) {
-        const test = this.courses.courseList.find((c) => {c.courseId == id});
-        test.wishListFlag = !test.wishListFlag;
+        const course = this.courses.courseList.find( c => c.courseId == id);
+        course.wishListFlag = !course?.wishListFlag;
         return `we toggled the wishListFlag from ${id}}`;
     }
 }
