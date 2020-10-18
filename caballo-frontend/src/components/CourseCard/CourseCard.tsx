@@ -4,25 +4,28 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import {ICourseCard} from "./ICourseCard";
-import {IconButton} from "@material-ui/core";
+import {CardMedia, IconButton} from "@material-ui/core";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const useStyles = makeStyles({
     root: {
-        width: 450,
-        marginBottom: 25
+        marginBottom: 25,
+        display: 'flex',
     },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
+    cover: {
+        width: 300,
+        height: 150,
+    },
+    content: {
+        alignSelf: 'center',
+        display: 'flex',
     },
     title: {
-        fontSize: 14,
+        width: 200,
     },
-    pos: {
-        marginBottom: 12,
+    icon: {
+        width: 100,
     },
 });
 
@@ -36,14 +39,19 @@ export const CourseCard: React.FC<ICourseCard> = ({course, toggleFav}) => {
 
     return (
         <Card className={classes.root}>
-            <CardContent>
-                <Typography component="h3">
+            <CardMedia
+                className={classes.cover}
+                image="https://cdn.wehorse.com/video/course/0/0/0/0/0/0/0/6/de/images/grundlagen-traversale-reiten.jpg?width=772&height=400"
+                title="Live from space album cover"
+            />
+            <CardContent className={classes.content}>
+                <Typography component="h3" className={classes.title}>
                     {course.courseName}
                 </Typography>
+                <IconButton className={classes.icon} aria-label="add to favorites" onClick={() => toggleFav(course)}>
+                    {favIcon}
+                </IconButton>
             </CardContent>
-            <IconButton aria-label="add to favorites" onClick={() => toggleFav(course)}>
-                {favIcon}
-            </IconButton>
         </Card>
     );
 }

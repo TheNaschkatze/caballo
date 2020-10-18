@@ -20,23 +20,22 @@ export const CoursesList: React.FC = () => {
         shallowEqual
     )
 
-    const dispatch: Dispatch<any> = useDispatch()
+    const dispatch: Dispatch<any> = useDispatch();
 
-    const toggleFav: any = React.useCallback(
-        (course: ICourse) => dispatch(toggleWishListFlag(course)),
-        [dispatch]
-    )
+    const toggleFav: any =
+        (course: ICourse) => dispatch(toggleWishListFlag(course));
+
 
     useEffect(() => {
         // Update the document title using the browser API
         dispatch(fetchCourses())
-    },[]);
+    });
     return (
         <main className={styles.root}>
             <Grid container justify="center" alignItems="center">
                 <Grid item xs={12}>
-                    <Typography variant="h2" gutterBottom align="center">
-                        My Courses
+                    <Typography variant="h4" gutterBottom align="center">
+                        Meine Kurse
                     </Typography>
                 </Grid>
                 <Grid item>
@@ -51,7 +50,7 @@ export const CoursesList: React.FC = () => {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundColor: 'lightgray',
+        backgroundColor: 'rgb(247,247,247)',
     },
 
 }));
